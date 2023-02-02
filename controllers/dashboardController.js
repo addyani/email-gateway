@@ -59,6 +59,144 @@ class DashboardController {
 
     };
 
+    //CRUD Company
+    static async getCompanyAll(req, res, next) {
+        const urlMail = `http://localhost:3000/company`;
+        const data = {
+            uri: urlMail,
+            json: true
+        };
+
+        res.render('index', {
+            title: 'Form Create Template'
+        });
+    };
+
+    static async getCompanyDetail(req, res, next) {
+        const id = req.params.id;
+        const urlMail = `http://localhost:3000/company/${id}`;
+        const data = {
+            uri: urlMail,
+            json: true
+        };
+
+        const datas = await request(data);
+
+        res.render('index', {
+            title: 'Form Template Detail',
+            data: datas
+        });
+    };
+
+    static async postCompanyCreate(req, res, next) {
+        const urlMail = `http://localhost:3000/company`;
+        const option = {
+            method: 'POST',
+            uri: urlMail,
+            body: req.body,
+            json: true
+        };
+
+        await request(option);
+        res.redirect('/company-contact');
+    };
+
+    static async postCompanyUpdate(req, res, next) {
+        const id = req.params.id;
+        const urlMail = `http://localhost:3000/company/update/${id}`;
+        const option = {
+            method: 'POST',
+            uri: urlMail,
+            body: req.body,
+            json: true
+        };
+
+        await request(option);
+        res.redirect('/company-contact');
+    };
+
+    static async getCompanyDelete(req, res, next) {
+        const id = req.params.id;
+        const urlMail = `http://localhost:3000/company/delete/${id}`;
+        const option = {
+            uri: urlMail,
+            body: req.body,
+            json: true
+        };
+
+        await request(option);
+        res.redirect('/company-contact');
+    };
+
+    //CRUD Contact
+    static async getContactAll(req, res, next) {
+        const urlMail = `http://localhost:3000/contact`;
+        const data = {
+            uri: urlMail,
+            json: true
+        };
+
+        res.render('index', {
+            title: 'Form Create Template'
+        });
+    };
+
+    static async getContactDetail(req, res, next) {
+        const id = req.params.id;
+        const urlMail = `http://localhost:3000/contact/${id}`;
+        const data = {
+            uri: urlMail,
+            json: true
+        };
+
+        const datas = await request(data);
+
+        res.render('index', {
+            title: 'Form Template Detail',
+            data: datas
+        });
+    };
+
+    static async postContactCreate(req, res, next) {
+        const urlMail = `http://localhost:3000/contact`;
+        const option = {
+            method: 'POST',
+            uri: urlMail,
+            body: req.body,
+            json: true
+        };
+
+        await request(option);
+        res.redirect('/company-contact');
+    };
+
+    static async postContactUpdate(req, res, next) {
+        const id = req.params.id;
+        const urlMail = `http://localhost:3000/contact/update/${id}`;
+        const option = {
+            method: 'POST',
+            uri: urlMail,
+            body: req.body,
+            json: true
+        };
+
+        await request(option);
+        res.redirect('/company-contact');
+    };
+
+    static async getContactDelete(req, res, next) {
+        const id = req.params.id;
+        const urlMail = `http://localhost:3000/contact/delete/${id}`;
+        const option = {
+            uri: urlMail,
+            body: req.body,
+            json: true
+        };
+
+        await request(option);
+        res.redirect('/company-contact');
+    };
+
     //Read, Update, Delete MAILBOX SCHEDULE
     static async getMailboxScheduleDetail(req, res, next) {
         const id = req.params.id;
@@ -102,13 +240,8 @@ class DashboardController {
         await request(option);
         res.redirect('/dashboard');
     };
-};
 
-module.exports = DashboardController
-
-/*  -- Template Mailboxes --
-
-   //Create, Read, Update, Delete MAILBOX Template
+    //CRUD MAILBOX Template
     static async getTemplateMailboxAll(req, res, next) {
         const urlMail = `http://localhost:3000/mailbox-template`;
         const data = {
@@ -116,7 +249,7 @@ module.exports = DashboardController
             json: true
         };
 
-        res.render('index', { 
+        res.render('index', {
             title: 'Form Create Template'
         });
     };
@@ -131,8 +264,8 @@ module.exports = DashboardController
 
         const datas = await request(data);
 
-        res.render('index', { 
-            title: 'Form Template Detail' 
+        res.render('index', {
+            title: 'Form Template Detail',
             data: datas
         });
     };
@@ -175,6 +308,7 @@ module.exports = DashboardController
 
         await request(option);
         res.redirect('/dashboard');
-    }; 
+    };
+};
 
-*/
+module.exports = DashboardController

@@ -6,6 +6,10 @@ class DashboardController {
         res.render('index', { title: 'Form Login' });
     };
 
+    static async getLogin(req, res, next) {
+        res.redirect('/authorize/login');
+    };
+
     static async getMailbox(req, res, next) {
         res.render('index', { title: 'Form Mailbox' });
     };

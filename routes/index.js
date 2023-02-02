@@ -5,6 +5,7 @@ const DashboardController = require('../controllers/dashboardController');
 
 //Frontend routes
 router.get('/', DashboardController.getIndex )
+router.get('/login', DashboardController.getLogin )
 router.get('/dashboard', DashboardController.getDashboard )
 router.get('/company-contact', DashboardController.getCompanyContact )
 router.get('/send', DashboardController.getMailbox )

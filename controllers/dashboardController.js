@@ -18,6 +18,23 @@ class DashboardController {
         const option = {
             method: 'POST',
             uri: 'http://localhost:3000/send-email',
+            body: req.body,
+            json: true
+        };
+
+        await request(option);
+        res.redirect('/dashboard');
+    };
+
+    static async getExcel(req, res, next) {
+        res.render('index', { title: 'Form Upload Excel' });
+    };
+
+    static async postExcel(req, res, next) {
+        const option = {
+            method: 'POST',
+            uri: 'http://localhost:3000/import-excel',
+            body: req.body,
             json: true
         };
 
